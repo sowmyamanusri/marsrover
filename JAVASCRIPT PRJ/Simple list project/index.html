@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Simple List</title>
+</head>
+
+<body>
+    <header id="main-header" class="bg-success text-white mb-3 p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="header-title">Simple List</h1>
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <input type="text" id="filter" class="form-control" placeholder="Search items...">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div id="main" class="card card-body">
+            <h2 class="title">Add Item</h2>
+            <form id="addForm" class="form-inline mb-2">
+                <input type="text" class="form-control mr-2" id="item">
+                <input type="submit" class="btn btn-dark" Value="submit">
+            </form>
+            <h2 class="title">Items</h2>
+            <ul id="items" class="list-group">
+                <li class="list-group-item">Milk<button class="btn btn-danger btn-sm float-right delete">X
+                    </button></li>
+                <li class="list-group-item">Egg<button class="btn btn-danger btn-sm float-right delete">X
+                    </button></li>
+                <li class="list-group-item">Curd<button class="btn btn-danger btn-sm float-right delete">X
+                    </button></li>
+                <li class="list-group-item">Sugar<button class="btn btn-danger btn-sm float-right delete">X
+                    </button></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script src="main.js"></script>
+
+</html>
