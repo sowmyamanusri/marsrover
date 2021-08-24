@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: #0d1113;
+    background: linear-gradient(to bottom, #e6f7ff, #0d1113);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    color: #fff;
+}
+
+.countdown-container {
+    display: flex;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+    font-size: 1.2em;
+}
+
+.time h1 {
+    margin-bottom: 0;
+}
+
+.fa-snowflake {
+    color: #fff;
+    position: absolute;
+    top: -20px;
+    animation: fall 10s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh);
+    }
+}
