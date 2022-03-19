@@ -1,64 +1,86 @@
+import { Direction } from "./direction";
+import { Plateau } from "./plateau";
 import { State } from "./state";
+import { Coordinate } from "./coordinate";
 
 export class Rover {
-    state : State;
-constructor(state:State){
+  state: State;
+  plateau: Plateau;
+
+  constructor(state: State, plateau: Plateau) {
     this.state = state;
-}
+    this.plateau = plateau;
+  }
 
-export function Move() {
-    
-}
+  Move(): void {
+    if (
+      this.state.coordinate.y > this.plateau.n ||
+      this.state.coordinate.x > this.plateau.m ||
+      this.state.coordinate.y < 0 ||
+      this.state.coordinate.x < 0
+    ) {
+      throw new Error("No path,can't move");
+    }
+    switch (this.state.direction) {
+      case Direction.N:
+        this.state.coordinate.y++;
+        break;
+      case Direction.W:
+        this.state.coordinate.x--;
+        break;
+      case Direction.E:
+        this.state.coordinate.x++;
+        break;
+      case Direction.S:
+        this.state.coordinate.y--;
+        break;
+    }
+  }
 
-export function Turn(angle:string):void{
-//let x = this.state.coordinate.x;
-//let y = this.state.coordinate.y;
-//let direction = this.state.direction;
-
-
+  Turn(angle: string): void {
     switch (angle) {
-        case "L": {
-            switch (this.state.direction) {
-                case "E": 
-                this.state.direction = "N";
-                    break;
-                case "W":                  
-                this.statedirection = "S";
-                    break;
-                case "N":                
-                this.statedirection = "W";  
-                    break;
-                case "S":                
-                this.statedirection = "E";  
-                    break;          
-                default:
-                    break;
-            }
-        }
-            break;            
-        case "R":   {
-        switch (direction) {
-            case "E": 
-            this.statedirection = "S";
-                break;
-            case "W":                  
-            this.statedirection = "N";
-                break;
-            case "N":                
-            this.statedirection = "E";  
-                break;
-            case "S":                
-            this.statedirection = "W";  
-                break;          
+      case "L":
+        {
+          switch (this.state.direction) {
+            case Direction.E:
+              this.state.direction = Direction.N;
+              break;
+            case Direction.W:
+              this.state.direction = Direction.S;
+              break;
+            case Direction.N:
+              this.state.direction = Direction.W;
+              break;
+            case Direction.S:
+              this.state.direction = Direction.E;
+              break;
             default:
-                break;
-        } 
+              break;
+          }
+        }
+        break;
+      case "R":
+        {
+          switch (this.state.direction) {
+            case Direction.E:
+              this.state.direction = Direction.S;
+              break;
+            case Direction.W:
+              this.state.direction = Direction.N;
+              break;
+            case Direction.N:
+              this.state.direction = Direction.E;
+              break;
+            case Direction.S:
+              this.state.direction = Direction.W;
+              break;
+            default:
+              break;
+          }
+        }
+        break;
+      default:
+        break;
     }
-            break;      
-        default:
-            break;
-    }
-}
-
-
+  }
 }

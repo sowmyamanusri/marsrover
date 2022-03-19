@@ -4,11 +4,10 @@
   "description": "marsrover kata",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon ./src/index.ts",
+    "start": "nodemon ./src/rover.ts",
     "build": "tsc --project ./tsconfig.json",
     "test": "jest",
-    "type":"module"
-
+    "type": "module"
   },
   "author": "sowmya",
   "license": "ISC",

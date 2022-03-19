@@ -1,3 +1,3 @@
-export enum Direction {
+export enum Direction{
     N,S,E,W
 }
