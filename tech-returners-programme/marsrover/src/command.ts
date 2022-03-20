@@ -9,7 +9,7 @@ export class Command {
     this.rover = rover;
   }
 
-  exceute(instructions: string): State {
+  Execute(instructions: string): State {
     instructions.split("").forEach((instruction) => {
       switch (instruction) {
         case "L":

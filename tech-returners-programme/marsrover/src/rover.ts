@@ -19,7 +19,7 @@ export class Rover {
       this.state.coordinate.y < 0 ||
       this.state.coordinate.x < 0
     ) {
-      throw new Error("No path,can't move");
+      throw new Error("Obstacles , can't move");
     }
     switch (this.state.direction) {
       case Direction.N:
@@ -37,8 +37,8 @@ export class Rover {
     }
   }
 
-  Turn(angle: string): void {
-    switch (angle) {
+  Turn(turnCommand: string): void {
+    switch (turnCommand) {
       case "L":
         {
           switch (this.state.direction) {
@@ -53,8 +53,6 @@ export class Rover {
               break;
             case Direction.S:
               this.state.direction = Direction.E;
-              break;
-            default:
               break;
           }
         }
@@ -73,8 +71,6 @@ export class Rover {
               break;
             case Direction.S:
               this.state.direction = Direction.W;
-              break;
-            default:
               break;
           }
         }
