@@ -14,7 +14,7 @@ describe("Moving rover", () => {
     );
     let command = new Command(rover);
     expect(() => {
-      command.Execute("LLMM");
+      command.execute("LLMM");
     }).toThrow("Obstacles , can't move");
   });
 
@@ -26,7 +26,7 @@ describe("Moving rover", () => {
     );
     let command = new Command(rover);
     expect(() => {
-      command.Execute("LLMM");
+      command.execute("LLMM");
     }).toThrow("Obstacles , can't move");
   });
 
@@ -37,7 +37,7 @@ describe("Moving rover", () => {
       plateau
     );
     let command = new Command(rover);
-    expect(command.Execute("")).toStrictEqual(
+    expect(command.execute("")).toStrictEqual(
       new State(new Coordinate(0, 0), Direction.N)
     );
   });
@@ -52,7 +52,7 @@ describe("Moving rover", () => {
 
     let command = new Command(rover);
 
-    expect(command.Execute("LMLMLMLMM")).toStrictEqual(
+    expect(command.execute("LMLMLMLMM")).toStrictEqual(
       new State(new Coordinate(1, 3), Direction.N)
     );
   });
@@ -67,7 +67,7 @@ describe("Moving rover", () => {
 
     let command = new Command(rover);
 
-    expect(command.Execute("MMRMMRMRRM")).toStrictEqual(
+    expect(command.execute("MMRMMRMRRM")).toStrictEqual(
       new State(new Coordinate(5, 1), Direction.E)
     );
   });
@@ -82,7 +82,7 @@ describe("Moving rover", () => {
 
     let command = new Command(rover);
 
-    expect(command.Execute("LMLMLMLMMMMM")).toStrictEqual(
+    expect(command.execute("LMLMLMLMMMMM")).toStrictEqual(
       new State(new Coordinate(1, 6), Direction.N)
     );
   });

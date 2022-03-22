@@ -2,8 +2,9 @@ import { Direction } from "./direction";
 import { Plateau } from "./plateau";
 import { State } from "./state";
 import { Coordinate } from "./coordinate";
+import { IRover } from "./Irover";
 
-export class Rover {
+export class Rover implements IRover {
   state: State;
   plateau: Plateau;
 
@@ -12,7 +13,7 @@ export class Rover {
     this.plateau = plateau;
   }
 
-  Move(): void {
+  move(): void {
     if (
       this.state.coordinate.y > this.plateau.n ||
       this.state.coordinate.x > this.plateau.m ||
@@ -37,7 +38,7 @@ export class Rover {
     }
   }
 
-  Turn(turnCommand: string): void {
+  turn(turnCommand: string): void {
     switch (turnCommand) {
       case "L":
         {

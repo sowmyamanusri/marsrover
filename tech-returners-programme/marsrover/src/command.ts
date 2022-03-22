@@ -1,4 +1,3 @@
-import { Plateau } from "./plateau";
 import { Rover } from "./rover";
 import { State } from "./state";
 
@@ -9,17 +8,17 @@ export class Command {
     this.rover = rover;
   }
 
-  Execute(instructions: string): State {
+  execute(instructions: string): State {
     instructions.split("").forEach((instruction) => {
       switch (instruction) {
         case "L":
         case "R":
           {
-            this.rover.Turn(instruction);
+            this.rover.turn(instruction);
           }
           break;
         case "M":
-          this.rover.Move();
+          this.rover.move();
           break;
       }
     });
