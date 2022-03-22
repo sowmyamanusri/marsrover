@@ -6,6 +6,30 @@ import { Direction } from "../direction";
 import { State } from "../state";
 
 describe("Moving rover", () => {
+  it("should throw an error if given coordinates that are too large", () => {
+    let plateau = new Plateau(5, 5);
+    let rover = new Rover(
+      new State(new Coordinate(7, 1), Direction.N),
+      plateau
+    );
+    let command = new Command(rover);
+    expect(() => {
+      command.Execute("LLMM");
+    }).toThrow("Obstacles , can't move");
+  });
+
+  it("should throw an error if given coordinates that are too large", () => {
+    let plateau = new Plateau(5, 5);
+    let rover = new Rover(
+      new State(new Coordinate(-1, -3), Direction.N),
+      plateau
+    );
+    let command = new Command(rover);
+    expect(() => {
+      command.Execute("LLMM");
+    }).toThrow("Obstacles , can't move");
+  });
+
   test("should  rover start from a given initial point", () => {
     let plateau = new Plateau(5, 5);
     let rover = new Rover(
