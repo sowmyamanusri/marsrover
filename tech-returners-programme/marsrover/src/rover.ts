@@ -2,9 +2,8 @@ import { Direction } from "./direction";
 import { Plateau } from "./plateau";
 import { State } from "./state";
 import { Coordinate } from "./coordinate";
-import { IRover } from "./Irover";
 
-export class Rover implements IRover {
+export class Rover {
   state: State;
   plateau: Plateau;
 
