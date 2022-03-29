@@ -6,8 +6,20 @@ import { Coordinate } from "./coordinate";
 export class Rover {
   state: State;
   plateau: Plateau;
+  static roverPositions: Array<Coordinate> = [];
 
   constructor(state: State, plateau: Plateau) {
+    State.id++;
+    if (
+      Rover.roverPositions.find(
+        (r) => r.x == state.coordinate.x && r.y == state.coordinate.y
+      )
+    ) {
+      throw new Error("Can't place the new rover in that position");
+    } else {
+      Rover.roverPositions.push(state.coordinate);
+    }
+
     this.state = state;
     this.plateau = plateau;
   }
@@ -22,17 +34,65 @@ export class Rover {
       throw new Error("Obstacles , can't move");
     }
     switch (this.state.direction) {
-      case Direction.N:
-        this.state.coordinate.y++;
+      case "N":
+        {
+          if (
+            Rover.roverPositions.find(
+              (r) =>
+                r.x == this.state.coordinate.x &&
+                r.y == this.state.coordinate.y + 1
+            )
+          ) {
+            throw new Error("Obstacles! other rover is already there");
+          } else {
+            this.state.coordinate.y++;
+          }
+        }
         break;
-      case Direction.W:
-        this.state.coordinate.x--;
+      case "W":
+        {
+          if (
+            Rover.roverPositions.find(
+              (r) =>
+                r.x == this.state.coordinate.x - 1 &&
+                r.y == this.state.coordinate.y
+            )
+          ) {
+            throw new Error("Obstacles! other rover is already there");
+          } else {
+            this.state.coordinate.x--;
+          }
+        }
         break;
-      case Direction.E:
-        this.state.coordinate.x++;
+      case "E":
+        {
+          if (
+            Rover.roverPositions.find(
+              (r) =>
+                r.x == this.state.coordinate.x + 1 &&
+                r.y == this.state.coordinate.y
+            )
+          ) {
+            throw new Error("Obstacles! other rover is already there");
+          } else {
+            this.state.coordinate.x++;
+          }
+        }
         break;
-      case Direction.S:
-        this.state.coordinate.y--;
+      case "S":
+        {
+          if (
+            Rover.roverPositions.find(
+              (r) =>
+                r.x == this.state.coordinate.x &&
+                r.y == this.state.coordinate.y - 1
+            )
+          ) {
+            throw new Error("Obstacles! other rover is already there");
+          } else {
+            this.state.coordinate.y--;
+          }
+        }
         break;
     }
   }
@@ -42,41 +102,37 @@ export class Rover {
       case "L":
         {
           switch (this.state.direction) {
-            case Direction.E:
-              this.state.direction = Direction.N;
+            case "E":
+              this.state.direction = "N";
               break;
-            case Direction.W:
-              this.state.direction = Direction.S;
+            case "W":
+              this.state.direction = "S";
               break;
-            case Direction.N:
-              this.state.direction = Direction.W;
+            case "N":
+              this.state.direction = "W";
               break;
-            case Direction.S:
-              this.state.direction = Direction.E;
-              break;
-          }
-        }
-        break;
-      case "R":
-        {
-          switch (this.state.direction) {
-            case Direction.E:
-              this.state.direction = Direction.S;
-              break;
-            case Direction.W:
-              this.state.direction = Direction.N;
-              break;
-            case Direction.N:
-              this.state.direction = Direction.E;
-              break;
-            case Direction.S:
-              this.state.direction = Direction.W;
+            case "S":
+              this.state.direction = "E";
               break;
           }
         }
         break;
-      default:
-        break;
+      case "R": {
+        switch (this.state.direction) {
+          case "E":
+            this.state.direction = "S";
+            break;
+          case "W":
+            this.state.direction = "N";
+            break;
+          case "N":
+            this.state.direction = "E";
+            break;
+          case "S":
+            this.state.direction = "W";
+            break;
+        }
+      }
     }
   }
 }

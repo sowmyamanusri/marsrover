@@ -1,5 +1,5 @@
-import { IPlateau } from "./Iplateau";
-export class Plateau implements IPlateau {
+import { PlateauInterface } from "./plateau.interface";
+export class Plateau implements PlateauInterface {
   m: number;
   n: number;
   constructor(m: number, n: number) {
