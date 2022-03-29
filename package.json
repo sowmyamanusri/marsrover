@@ -1,0 +1,27 @@
+{
+  "name": "marsrover",
+  "version": "1.0.0",
+  "description": "marsrover kata",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon ./src/rover.ts",
+    "build": "tsc --project ./tsconfig.json",
+    "test": "jest",
+    "type": "module"
+  },
+  "author": "sowmya",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^27.4.1",
+    "concurrently": "^7.0.0",
+    "jest": "^27.5.1",
+    "lite-server": "^2.6.1",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.7.0"
+  }
+}
